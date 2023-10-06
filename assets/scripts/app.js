@@ -1,11 +1,21 @@
 class Tooltip {}
 
-class ProjectItem {}
+class ProjectItem {
+  constructor(id) {
+    this.id = id;
+  }
+}
 
 class ProjectList {
+  projects = [];
+
   constructor(type) {
     const prjItems = document.querySelectorAll(`#${type}-projects li`);
-    console.log(prjItems);
+    for (const prjItem of prjItems) {
+      this.projects.push(new ProjectItem(prjItem.id));
+    }
+    console.log(this.projects);
+    // we got an array with objects now, not DOM node objects but simpler objects which in the end just have an ID property
   }
 }
 
